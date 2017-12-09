@@ -2,6 +2,7 @@
 var express = require("express");
 var app = express();
 var port = 13337;
+// var port = process.env.PORT;
 
 // Setup view engine
 app.set('view engine', 'ejs');
@@ -10,9 +11,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // Routes
-app.get('/', function(req, res){
-	res.render('index');
-})
+var index = require('./routes/index');
+app.use('/', index);
 
 // WebSockets
 var io = require('socket.io').listen(app.listen(port));

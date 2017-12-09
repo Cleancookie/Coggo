@@ -1,4 +1,4 @@
-# Skeleton
+# Skeleton Project
 
 ## Overview
 
