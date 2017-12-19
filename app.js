@@ -1,68 +1,53 @@
-var express = require('express');
-var io = require('socket.io');
+var env = process.env.NODE_ENV || 'dev';
+console.log('ENVIRONMENT: ' + env);
+
+// Setup
+var express = require('express'); // Load Express framework
+var io = require('socket.io'); // Used for websockets
 
 var app = express();
-var multer = require('multer')
-var constants = require('constants');
-var constant = require('./config/constants');
+var constant = require('./config/constants'); // Constants
 
-var port = process.env.PORT || 8042;
-var mongoose = require('mongoose');
-var passport = require('passport');
-var flash = require('connect-flash');
-var path = require('path');
+var port = process.env.PORT || 13337;
+var flash = require('connect-flash'); // For flash messages
+var path = require('path'); // Recursively require(...) files from a directory tree in Node.js
 
-var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var dateFormat = require('dateformat');
-var now = new Date();
+var morgan = require('morgan'); // HTTP logger
+var cookieParser = require('cookie-parser'); // Cookie parser
+var bodyParser = require('body-parser'); // Used to parse html forms 
+var session = require('express-session'); // For sessions
+var dateFormat = require('dateformat'); // For better date formatting
 
+// Use middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
-/***************Mongodb configuratrion********************/
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'); // MongoDB ORM
 var configDB = require('./config/database.js');
-//configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+switch (env) {
+	case "dev":
+		mongoose.connect(configDB.dev); // connect to our database
+		break;
+	default:
+		mongoose.connect(configDB.live); // connect to our database
+}
 
-
-require('./config/passport')(passport); // pass passport for configuration
-
-//set up our express application
+// Set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 //app.use(bodyParser()); // get information from html forms
 
-//view engine setup
+// View engine setup
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
-//app.set('view engine', 'ejs'); // set up ejs for templating
 
-
-//required for passport
-//app.use(session({ secret: 'iloveyoudear...' })); // session secret
-
-app.use(session({
-    secret: 'I Love India...',
-    resave: true,
-    saveUninitialized: true
-}));
-
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-// routes ======================================================================
-require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+// Routes
+require('./config/routes.js')(app);
 
-
-//launch ======================================================================
+// Launch
 io.listen(app.listen(port))
 console.log('The magic happens on port ' + port);
 
