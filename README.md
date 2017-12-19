@@ -10,6 +10,6 @@ This project uses [ejs](http://ejs.co/) as the view engine.  The default port is
 
 ## TODO
 
-* Install nodemon
-* Decide on a database,  possibly mongoose?
-* Maybe webpack + bootstrap?
+* Remove dependencies
+* Remove passport.js related code
+* Maybe webpack/parcel + bootstrap?
