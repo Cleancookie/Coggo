@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title><%= title %></title>
+	<title><%= locals.title || 'Cookie Template' %></title>
 
 	<%- include('./partials/cdn/jquery'); %>
 	<%- include('./partials/cdn/bootstrap'); %>

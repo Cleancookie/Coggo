@@ -2,6 +2,7 @@ var PagesController = require('../app/controllers/PagesController');
 
 module.exports = function (app) {
     app.get('/', PagesController.home); // Homepage
+    app.get('/test', PagesController.testPage); // Homepage
 
     //catch 404 and forward to error handler
 	app.use(function (req, res, next) {
