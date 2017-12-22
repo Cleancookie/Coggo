@@ -13,7 +13,8 @@ var mongoose = require('mongoose');
 var configDB = require('./config/database.js');
 
 // Use middleware
-app.use(expressLayouts);
+app.use(morgan('dev')); // log every request to the console 
+app.use(expressLayouts); // Enable express layouts
 
 // Database
 switch (env) {
@@ -38,4 +39,4 @@ console.log('The magic happens on port ' + port);
 
 // Sockets
 var SocketController = require('./app/controllers/SocketController');
-SocketController.init(io, socket);
+SocketController.init(io);
