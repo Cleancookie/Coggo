@@ -19,11 +19,15 @@ app.use(expressLayouts); // Enable express layouts
 // Database
 switch (env) {
 	case "dev":
-		mongoose.connect(configDB.dev); // connect to our database
+		configDB = configDB.dev;
 		break;
 	default:
-		mongoose.connect(configDB.live); // connect to our database
-}
+		configDB = configDB.live;
+}	
+mongoose.connect(configDB, function(err){
+	console.log('Could not connect to database.');
+}); // Connect to database
+
 
 // View engine setup
 app.use(express.static(path.join(__dirname, 'public')));
