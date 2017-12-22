@@ -1,26 +1,17 @@
-var home = require('../app/controllers/home');
+var startTime;
+var socket = io();
 
-//you can include all your controllers
+setInterval(function() {
+  startTime = Date.now();
+  socket.emit('ping');
+  console.log('sent');
+}, 500);
 
-module.exports = function (app, passport) {
+socket.on('pong', function() {
+  latency = Date.now() - startTime;
+  console.log(latency);
+});
 
-    app.get('/login', home.login);
-    app.get('/signup', home.signup);
-
-    app.get('/', home.loggedIn, home.home);//home
-    app.get('/home', home.loggedIn, home.home);//home
-
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/home', // redirect to the secure profile section
-        failureRedirect: '/signup', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
-    // process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/home', // redirect to the secure profile section
-        failureRedirect: '/login', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
-    }));
-
-
-}
+socket.on('yerd', function() {
+	console.log('yerded');
+});
