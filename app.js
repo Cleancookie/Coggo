@@ -38,10 +38,6 @@ console.log('The magic happens on port ' + port);
 
 // Sockets
 io.on('connection', function (socket) {
-	var thisId = socket.id;
-	console.log('New client: ' + thisId);
-
-	socket.on('yerd', function(){
-		socket.emit('yerded');
-	});
+	var SocketController = require('./app/controllers/SocketController');
+	SocketController.init(io, socket);
 });
