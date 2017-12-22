@@ -37,7 +37,5 @@ var io = socketio.listen(app.listen(port))
 console.log('The magic happens on port ' + port);
 
 // Sockets
-io.on('connection', function (socket) {
-	var SocketController = require('./app/controllers/SocketController');
-	SocketController.init(io, socket);
-});
+var SocketController = require('./app/controllers/SocketController');
+SocketController.init(io, socket);
