@@ -39,3 +39,4 @@ Everything is setup [OOTB](http://lmgtfy.com/?q=Out+of+the+box) for a single pag
 ## TODO
 
 * Consider using parceljs/gulp/webpack
+* Write sample content for index.ejs
