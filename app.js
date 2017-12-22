@@ -5,7 +5,7 @@ console.log('ENVIRONMENT: ' + env);
 var express = require('express'); // Load Express framework
 var app = express();
 var expressLayouts = require('express-ejs-layouts'); // ejs layouts
-var io = require('socket.io'); // Used for websockets
+var socketio = require('socket.io'); // Used for websockets
 var port = process.env.PORT || 13337;
 var path = require('path'); // Recursively require(...) files from a directory tree in Node.js
 var morgan = require('morgan'); // HTTP logger
@@ -33,5 +33,15 @@ app.set('view engine', 'ejs');
 require('./config/routes.js')(app);
 
 // Launch
-io.listen(app.listen(port))
+var io = socketio.listen(app.listen(port))
 console.log('The magic happens on port ' + port);
+
+// Sockets
+io.on('connection', function (socket) {
+	var thisId = socket.id;
+	console.log('New client: ' + thisId);
+
+	socket.on('yerd', function(){
+		socket.emit('yerded');
+	});
+});

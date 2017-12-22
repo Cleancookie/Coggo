@@ -1,17 +1,14 @@
 var startTime;
-var socket = io();
+var socket  = io.connect();
 
+startTime = Date.now();
+socket.emit('yerd');
 setInterval(function() {
-  startTime = Date.now();
-  socket.emit('ping');
-  console.log('sent');
-}, 500);
+	startTime = Date.now();
+	socket.emit('yerd');
+}, 1000);
 
-socket.on('pong', function() {
-  latency = Date.now() - startTime;
-  console.log(latency);
-});
-
-socket.on('yerd', function() {
-	console.log('yerded');
+socket.on('yerded', function() {
+	latency = Date.now() - startTime;
+	console.log(latency);
 });
