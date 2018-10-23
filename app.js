@@ -6,7 +6,6 @@ console.log('ENVIRONMENT: ' + env);
 // Setup
 const express = require('express');             // Express framework
 const app = express();                          // Express app
-const socketio = require('socket.io');          // Used for websockets
 const port = process.env.PORT || 13337;         // Port to run on 
 const path = require('path');                   // Recursively require(...) files from a directory tree in Node.js
 const bodyParser = require('body-parser');      // Middleware for req.Body
@@ -30,7 +29,7 @@ app.use(cookieParser());
 app.use('/', require('./Config/Routes'));
 
 // Launch
-const io = socketio.listen(app.listen(port))
-console.log('The magic happens on port ' + port);
+const io = require('socket.io')(app.listen(port));
+console.log('Set sail to port ' + port);
 
 // Sockets
