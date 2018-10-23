@@ -2,12 +2,12 @@
 
 class AppController {
     /**
-     * Base Controller that all classes should extend from
+     * Base HTTP controller
      * 
      * @param String controllerName 
      */
-    constructor(controllerName = 'App') {
-        this.ControllerName = controllerName;
+    constructor(name = 'App') {
+        this.name = name;
         this.express = require('express');
         this.router = this.express.Router();
     }

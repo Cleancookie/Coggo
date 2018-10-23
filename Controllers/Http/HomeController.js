@@ -1,4 +1,5 @@
 'use strict';
+
 const AppController = require ('./AppController');
 
 class HomeController extends AppController {

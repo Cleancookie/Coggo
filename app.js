@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');  // Cookie parser in req.cookies
 const morgan = require('morgan')                // HTTP loggger
 
 // View engine setup
-app.use(express.static(path.join(__dirname, 'Views/public')));
+app.use(express.static(path.join(__dirname, 'Views/Public')));
 app.set('views', path.join(__dirname, 'Views'));
 app.set('view engine', 'ejs');
 
@@ -33,3 +33,5 @@ const io = require('socket.io')(app.listen(port));
 console.log('Set sail to port ' + port);
 
 // Sockets
+const TestWs = require('./Controllers/Ws/TestWs');
+let testWs = new TestWs(io);
