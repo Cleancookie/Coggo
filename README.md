@@ -1,4 +1,4 @@
-# Bones App
+# Bones
 
 A skeleton Node + Typescript backend server built with MVC and OOP principles in mind.
 
