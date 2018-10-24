@@ -1,6 +1,6 @@
-# Cleancookie/Skeleton
+# Bones
 
-A Typescript backend server built with MVC and OOP principles in mind.
+A skeleton Node + Typescript backend server built with MVC and OOP principles in mind.
 
 ## Usage
 
