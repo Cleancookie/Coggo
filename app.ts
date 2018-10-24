@@ -8,7 +8,7 @@ const port = process.env.PORT || 13337;         // Port to run on
 const path = require('path');                   // Recursively require(...) files from a directory tree in Node.js
 const bodyParser = require('body-parser');      // Middleware for req.Body
 const cookieParser = require('cookie-parser');  // Cookie parser in req.cookies
-const morgan = require('morgan')                // HTTP loggger
+const morgan = require('morgan')                // HTTP logger
 
 // View engine setup
 app.use(express.static(path.join(__dirname, 'Views/Public')));
@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev')); // log every request to the console 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 })); 
 app.use(cookieParser());
 
