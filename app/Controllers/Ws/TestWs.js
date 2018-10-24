@@ -1,10 +1,14 @@
 'use strict';
 
-const AppWs = require('./AppWs');
+import AppWs from 'AppWs';
 
 class TestWs extends AppWs {
+    /**
+     * 
+     * @param SocketIO.server io Ws server instance
+     */
     constructor(io) {
-        super('Test', io);
+        super(io, 'Test');
     }
 
     startListeners() {

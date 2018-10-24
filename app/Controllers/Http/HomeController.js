@@ -13,7 +13,9 @@ class HomeController extends AppController {
     }
 
     homepage(req, res) {
-        res.render('Home/index')
+        res.render('Home/index', {
+            socketNamespace = 'Test'
+        });
     }
 }
 
