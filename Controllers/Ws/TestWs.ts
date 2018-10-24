@@ -1,18 +1,14 @@
-'use strict';
-
-import AppWs from 'AppWs';
+import { AppWs } from './AppWs';
+import * as SocketIO from 'socket.io';
 
 class TestWs extends AppWs {
-    /**
-     * 
-     * @param SocketIO.server io Ws server instance
-     */
+
     constructor(io) {
         super(io, 'Test');
     }
 
     startListeners() {
-        this.io.on('connection', (socket) => {
+        this.io.on('connection', (socket: SocketIO.Socket) => {
             console.log('User has connected to ' + this.name);
         });
     }

@@ -1,6 +1,10 @@
-'use strict';
+import * as Express from 'express';
 
-class AppController {
+export class AppController {
+
+    public name: string;
+    public router: Express.Router;
+
     /**
      * Base HTTP controller
      * 
@@ -8,9 +12,6 @@ class AppController {
      */
     constructor(name = 'App') {
         this.name = name;
-        this.express = require('express');
-        this.router = this.express.Router();
+        this.router = Express.Router();
     }
 }
-
-module.exports = AppController;

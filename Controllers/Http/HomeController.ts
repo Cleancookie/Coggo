@@ -1,8 +1,10 @@
-'use strict';
+import { AppController } from './AppController';
+import { Request, Response } from 'express';
 
-const AppController = require ('./AppController');
+export class HomeController extends AppController {
 
-class HomeController extends AppController {
+    public motd: string;
+
     constructor() {
         super('Home')
         this.motd = 'Test MOTD';
@@ -12,11 +14,9 @@ class HomeController extends AppController {
         return this.motd;
     }
 
-    homepage(req, res) {
+    homepage(req: Request, res: Response) {
         res.render('Home/index', {
-            socketNamespace = 'Test'
+            socketNamespace: 'Test'
         });
     }
 }
-
-module.exports = HomeController;

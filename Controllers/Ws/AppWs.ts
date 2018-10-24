@@ -1,14 +1,13 @@
-'use strict';
+import * as SocketIO from 'socket.io';
+import { SocketOptions } from 'dgram';
 
 export class AppWs {
 
-    /**
-     * Base WebSocket controller
-     * 
-     * @param String name Name of controller
-     * @param IO io SocketIO instance
-     */
-    constructor(io, name = 'App', socketNamespace = 'App') {
+    public name: string;
+    public io: SocketIO.Namespace;
+    public socketNamespace: string;
+
+    constructor(io: SocketIO.Server, name = 'App', socketNamespace = 'App') {
         this.name = name;
 
         this.socketNamespace = (socketNamespace.length != 0) ? socketNamespace : name;

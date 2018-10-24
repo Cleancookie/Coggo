@@ -1,10 +1,10 @@
-'use strict';
-const express = require('express');
-const router = express.Router();
+import * as Express from 'express';
+import { HomeController } from '../Controllers/Http/HomeController';
+
+let router = Express.Router();
 
 // Make controllers
-const HomeController = require('../Controllers/Http/HomeController');
-const homeController = new HomeController();
+let homeController = new HomeController();
 
 router.get('/', (req, res) => homeController.homepage(req, res));
 
