@@ -1,5 +1,5 @@
 {
-  "name": "skeleton",
+  "name": "bones",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cleancookie/Skeleton.git"
+    "url": "git+https://github.com/Cleancookie/bones.git"
   },
   "author": "Cleancookie",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Cleancookie/Skeleton/issues"
+    "url": "https://github.com/Cleancookie/bones/issues"
   },
-  "homepage": "https://github.com/Cleancookie/Skeleton#readme",
+  "homepage": "https://github.com/Cleancookie/bones#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
