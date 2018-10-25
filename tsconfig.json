@@ -17,7 +17,7 @@
         "target": "es2017",
         "emitDecoratorMetadata": true,
         "baseUrl" : ".",
-        "sourceMap": false
+        "sourceMap": true
     },
     "exclude": [
         "**/*.js",

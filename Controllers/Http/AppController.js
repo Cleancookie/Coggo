@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Express = require("express");
+const express = require("express");
 class AppController {
     /**
      * Base HTTP controller
@@ -9,7 +9,7 @@ class AppController {
      */
     constructor(name = 'App') {
         this.name = name;
-        this.router = Express.Router();
+        this.router = express.Router();
     }
 }
 exports.AppController = AppController;
