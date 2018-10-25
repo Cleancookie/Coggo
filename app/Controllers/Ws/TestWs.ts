@@ -1,5 +1,5 @@
 import { AppWs } from './AppWs';
-import * as SocketIO from 'socket.io';
+import * as socketIo from 'socket.io';
 
 class TestWs extends AppWs {
 
@@ -8,7 +8,7 @@ class TestWs extends AppWs {
     }
 
     startListeners() {
-        this.io.on('connection', (socket: SocketIO.Socket) => {
+        this.io.on('connection', (socket: socketIo.Socket) => {
             console.log('User has connected to ' + this.name);
         });
     }

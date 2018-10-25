@@ -1,9 +1,9 @@
-import * as Express from 'express';
+import * as express from 'express';
 
 export class AppController {
 
     public name: string;
-    public router: Express.Router;
+    public router: express.Router;
 
     /**
      * Base HTTP controller
@@ -12,6 +12,6 @@ export class AppController {
      */
     constructor(name = 'App') {
         this.name = name;
-        this.router = Express.Router();
+        this.router = express.Router();
     }
 }

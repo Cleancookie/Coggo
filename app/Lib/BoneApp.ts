@@ -10,10 +10,12 @@ export class BoneApp {
     private app: express.Express;
     private port: number;
     private io: socketIO.Server;
+    private viewFolder: string;
 
     constructor() {
         this.app = express();
         this.port = 13337;
+        this.viewFolder = path.join(__dirname, '../Views');
 
         this.initView();
         this.initMiddleware();
@@ -21,8 +23,8 @@ export class BoneApp {
     }
 
     private initView(): void {
-        this.app.use(express.static(path.join(__dirname, 'Views/Public')));
-        this.app.set('views', path.join(__dirname, 'Views'));
+        this.app.use(express.static(this.viewFolder + '/Public'));
+        this.app.set('views', this.viewFolder);
         this.app.set('view engine', 'ejs');
     }
 

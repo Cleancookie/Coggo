@@ -1,13 +1,13 @@
-import * as SocketIO from 'socket.io';
+import * as socketIo from 'socket.io';
 import { SocketOptions } from 'dgram';
 
 export class AppWs {
 
     public name: string;
-    public io: SocketIO.Namespace;
+    public io: socketIo.Namespace;
     public socketNamespace: string;
 
-    constructor(io: SocketIO.Server, name = 'App', socketNamespace = 'App') {
+    constructor(io: socketIo.Server, name = 'App', socketNamespace = 'App') {
         this.name = name;
 
         this.socketNamespace = (socketNamespace.length != 0) ? socketNamespace : name;
