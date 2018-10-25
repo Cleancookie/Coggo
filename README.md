@@ -1,22 +1,28 @@
 # Bones
 
-A skeleton Node + Typescript backend server built with MVC and OOP principles in mind.
+A skeleton Node + Typescript back end server built with MVC and OOP principles in mind.
 
 ## Usage
 
 ### Serving
 
-Make sure you have the prerequisites prior to running the backend
+Make sure you have the prerequisites prior to running the back end
 
 ```sh
+npm run serve-dev
+```
+
+or
+```sh
+npm run build
 npm run serve
 ```
 
 ### Development Workflow
 
-Inspect the `Config/routes.ts` file in order to get a jist of how to add your own routes.  HTTP Controllers are stored within `Contollers/Http/` where all controllers should be extending the `AppController` class.
+Inspect the `Config/routes.ts` file in order to get a jist of how to add your own routes.  HTTP Controllers are stored within `Controllers/Http/` where all controllers should be extending the `AppController` class.
 
-Webpack and Laravel Mix is used to compile front end assets.  The `src/*` files are compiled into `Views/public/`.  Run `npm run watch` or `npm run prodution` to compile assets.
+Webpack and Laravel Mix is used to compile front end assets.  The `src/*` files are compiled into `Views/public/`.  Run `npm run watch` or `npm run production` to compile assets.
 
 ## Main Dependencies 
 

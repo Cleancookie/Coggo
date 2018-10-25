@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir": ".",
+        "allowJs": true,
+        "allowUnusedLabels": true,
+        "alwaysStrict": true,
+        "charset": "utf-8",
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noFallthroughCasesInSwitch": false,
+        "noImplicitReturns": true,
+        "pretty": true,
+        "removeComments": false,
+        "rootDir": "./app",
+        "stripInternal": true,
+        "target": "es2017",
+        "emitDecoratorMetadata": true,
+        "baseUrl" : ".",
+        "sourceMap": false
+    },
+    "exclude": [
+        "**/*.js",
+        "typings/Promise.d.ts"
+    ],
+}
