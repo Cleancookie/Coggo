@@ -1,0 +1,24 @@
+{
+  "name": "bones",
+  "version": "2.0.0",
+  "description": "A skeleton node project using express with using OOD principles in mind.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run start:dev",
+    "start:dev": "./node_modules/.bin/nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cleancookie/Bones.git"
+  },
+  "author": "Cleancookie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cleancookie/Bones/issues"
+  },
+  "homepage": "https://github.com/Cleancookie/Bones#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
