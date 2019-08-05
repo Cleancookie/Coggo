@@ -1,6 +1,7 @@
 const express = require("express");
 const serverConfig = require("../server.config");
 const BoneRouter = require("./BoneRouter");
+const path = require("path");
 
 class BoneServer {
 	constructor() {
@@ -11,6 +12,12 @@ class BoneServer {
 	init() {
 		this.initMiddleware();
 		this.initRoutes();
+		this.initViewEngine();
+	}
+
+	initViewEngine() {
+		this.app.set("view engine", "ejs");
+		this.app.use(express.static(path.join(__dirname, "..", "public")));
 	}
 
 	initMiddleware() {

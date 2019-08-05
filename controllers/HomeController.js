@@ -1,8 +1,6 @@
 class HomeController {
 	async homepage(req, res) {
-		res.json({
-			msg: `Homepage function from HomeController`,
-		});
+		res.render("index", { message: "Yerd" });
 		return;
 	}
 }
