@@ -1,32 +1,37 @@
-const express = require("express");
-const serverConfig = require("../server.config");
+const Koa = require("koa");
 const BoneRouter = require("./BoneRouter");
+const koaEjs = require("koa-ejs");
+const json = require("koa-json");
 const path = require("path");
 
 class BoneServer {
 	constructor() {
-		this.app = express();
+		this.app = new Koa();
 		this.init();
 	}
 
 	init() {
 		this.initMiddleware();
-		this.initRoutes();
 		this.initViewEngine();
+		this.initRoutes();
 	}
 
 	initViewEngine() {
-		this.app.set("view engine", "ejs");
-		this.app.use(express.static(path.join(__dirname, "..", "public")));
+		koaEjs(this.app, {
+			root: path.join(__dirname, "..", "views"),
+			layout: "layouts/main",
+			viewExt: "ejs",
+			cache: false,
+			debug: false,
+		});
 	}
 
 	initMiddleware() {
-		this.app.use(express.json());
-		this.app.use(express.urlencoded({ extended: true }));
+		this.app.use(json());
 	}
 
 	initRoutes() {
-		this.app.use(BoneRouter);
+		this.app.use(BoneRouter.routes()).use(BoneRouter.allowedMethods());
 	}
 
 	launchServer(port) {

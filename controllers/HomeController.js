@@ -1,6 +1,6 @@
 class HomeController {
-	async homepage(req, res) {
-		res.render("index", { message: "Yerd" });
+	async homepage(ctx) {
+		await ctx.render("index", { message: "Yerd" });
 		return;
 	}
 }

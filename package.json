@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/Cleancookie/Bones#readme",
   "dependencies": {
-    "ejs": "^2.6.2",
-    "express": "^4.17.1"
+    "koa": "^2.7.0",
+    "koa-ejs": "^4.2.0",
+    "koa-json": "^2.0.2",
+    "koa-router": "^7.4.0",
+    "nodemon": "^1.19.1"
   }
 }
