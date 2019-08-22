@@ -2,7 +2,7 @@ const Koa = require("koa");
 const BoneRouter = require("./BoneRouter");
 const koaEjs = require("koa-ejs");
 const json = require("koa-json");
-const path = require("path");
+const config = require("../server.config");
 
 class BoneServer {
 	constructor() {
@@ -14,16 +14,22 @@ class BoneServer {
 		this.initMiddleware();
 		this.initViewEngine();
 		this.initRoutes();
+		if (config.websockets.enabled) {
+			this.initWebsockets();
+		}
+	}
+
+	initWebsockets() {
+		this.http = require("http").createServer(this.app.callback());
+		this.io = require("socket.io")(this.http);
+
+		this.io.on("connection", (socket) => {
+			console.log(`User(${socket.id}) has connected`);
+		});
 	}
 
 	initViewEngine() {
-		koaEjs(this.app, {
-			root: path.join(__dirname, "..", "views"),
-			layout: "layouts/main",
-			viewExt: "ejs",
-			cache: false,
-			debug: false,
-		});
+		koaEjs(this.app, config.koaEjs);
 	}
 
 	initMiddleware() {
@@ -35,8 +41,16 @@ class BoneServer {
 	}
 
 	launchServer(port) {
-		this.server = this.app.listen(port);
-		console.log(`Listening on port ${port}`);
+		if (config.websockets.enabled) {
+			this.server = this.http.listen(port, () => {
+				console.log(`Listening on port ${port}`);
+			});
+		} else {
+			this.server = this.app.listen(port, () => {
+				console.log(`Listening on port ${port}`);
+			});
+		}
+
 		return this.server;
 	}
 }
