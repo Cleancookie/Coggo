@@ -1,8 +1,12 @@
 class HomeController {
-	async homepage(ctx) {
-		await ctx.render("index", { message: "Yerd" });
-		return;
-	}
+  /**
+   * Renders the homepage
+   *
+   * @param {import('koa').Context} ctx
+   */
+  static async homepage(ctx) {
+    await ctx.render('index', { message: 'Yerd' });
+  }
 }
 
-exports = module.exports = new HomeController();
+module.exports = new HomeController();

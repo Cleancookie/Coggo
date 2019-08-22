@@ -1,8 +1,9 @@
-const KoaRouter = require("koa-router");
+const KoaRouter = require('koa-router');
+
 const router = new KoaRouter();
 
-const HomeController = require("../controllers/HomeController");
+const HomeController = require('../controllers/HomeController');
 
-router.get("/", HomeController.homepage);
+router.get('/', HomeController.homepage);
 
-exports = module.exports = router;
+module.exports = router;
