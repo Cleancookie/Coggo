@@ -1,7 +1,7 @@
 {
   "name": "bones",
   "version": "2.0.0",
-  "description": "A skeleton node project using express with using OOD principles in mind.",
+  "description": "A skeleton node webserver with http and websocket support",
   "main": "index.js",
   "scripts": {
     "start": "npm run start:dev",
